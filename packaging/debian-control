@@ -1,0 +1,7 @@
+Package: rzmvc
+Version: 0.0.1
+Maintainer: Rory Fewell <roryf@oddmatics.uk>
+Architecture: any
+Section: free
+Description: Simple PHP-based MVC libraries.
+Depends: php, php-mysql, apache2

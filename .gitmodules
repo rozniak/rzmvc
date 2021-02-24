@@ -1,0 +1,3 @@
+[submodule "submodules/safemysql"]
+	path = submodules/safemysql
+	url = https://github.com/colshrapnel/safemysql
