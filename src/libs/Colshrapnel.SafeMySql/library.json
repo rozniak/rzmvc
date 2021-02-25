@@ -1,0 +1,6 @@
+{
+    "name": "Colshrapnel.SafeMySql",
+    "files": [
+        "safemysql.class.php"
+    ]
+}
