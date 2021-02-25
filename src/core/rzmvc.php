@@ -13,7 +13,7 @@ function rzLoadLibrary(
     string $library
 )
 {
-    $libPath = "/usr/share/rzmvc/${library}.php";
+    $libPath = "/usr/share/rzmvc/lib/{$library}.php";
 
     require_once($libPath);
 }

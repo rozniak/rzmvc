@@ -54,13 +54,13 @@ class Controller
             substr(
                 $controller,
                 0,
-                srlen($controller) - 10
+                strlen($controller) - 10
             );
 
         $GLOBALS['viewPath'] =
-            "${this->webRootDir}/Views/${viewDir}/${viewName}.php";
+            "{$this->webRootDir}/Views/{$viewDir}/{$viewName}.php";
 
-        require("${this->webRootDir}/Views/_Layout.php");
+        require("{$this->webRootDir}/Views/_Layout.php");
 
         exit();
     }

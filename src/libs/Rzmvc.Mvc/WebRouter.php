@@ -65,19 +65,31 @@ final class WebRouter
         string $uri
     )
     {
-        $segments     = explode('/', $uri);
+        $segments     = array_diff(
+                            explode('/', $uri),
+                            array('')
+                        );
         $segmentCount = count($segments);
 
-        // Special case - if the URI is just one part go home
+        // Handle special cases for the home controller
         //
-        if ($segmentCount < 2)
+        switch ($segmentCount)
         {
-            return new ActionMapping(
-                'HomeController',
-                'index'
-            );
+            case 0:
+                return new ActionMapping(
+                    'HomeController',
+                    'index'
+                );
+
+            case 1:
+                return new ActionMapping(
+                    'HomeController',
+                    lcfirst($segments[0])
+                );
         }
 
+        // Perform normal routing
+        //
         $action     = '';
         $controller = '';
 
@@ -89,7 +101,7 @@ final class WebRouter
         $action = lcfirst($segments[$segmentCount - 1]);
 
         return new ActionMapping(
-            "${controller}Controller",
+            "{$controller}Controller",
             $action
         );
     }
@@ -107,7 +119,7 @@ final class WebRouter
         $action     = $controllerAction->getAction();
         $controller = $controllerAction->getController();
 
-        require("${this->webRootDir}/${controller}.php");
+        require("{$this->webRootDir}/Controllers/{$controller}.php");
 
         $controllerInst = new $controller();
 
